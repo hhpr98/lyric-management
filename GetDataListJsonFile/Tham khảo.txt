@@ -1,0 +1,20 @@
+get data rồi chuyển sang 1 file json
+
+{
+	{
+		id: 1,
+		tên: ....,
+		nhạc sĩ: ...., (phân cách nhau bởi dấu -)
+		tên file: abc - binz.docx,
+		url: C:/git/....,
+		type: doc/docx
+	},
+	{
+		id: 1,
+		tên: ....,
+		nhạc sĩ: ...., (phân cách nhau bởi dấu -)
+		tên file: abc - binz.docx,
+		url: C:/git/....,
+		type: doc/docx
+	},...
+}
