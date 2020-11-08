@@ -2,6 +2,7 @@
 using System;
 using System.Collections.Generic;
 using System.IO;
+using System.Text.Json;
 
 namespace GetDataLyricToJson
 {
@@ -9,7 +10,7 @@ namespace GetDataLyricToJson
     {
         static void Main(string[] args)
         {
-            var path = @"C:\git\LyricApp\LoiBaiHat2";
+            var path = @"C:\git\LyricApp\LoiBaiHat";
             var filePaths = Directory.GetFiles(path);
             // "C:\git\LyricApp\LoiBaiHat\1 Lần - Tr?ng Hiếu .docx"
             List<LyricClass> list = new List<LyricClass>();
@@ -64,6 +65,17 @@ namespace GetDataLyricToJson
 
                 i++;
             }
+
+            var jsonData = JsonSerializer.Serialize(list);
+            var nameFileToWrite = getFileString();
+            File.WriteAllText(@"C:\git\LyricApp\JsonFile\" + nameFileToWrite, jsonData);
+            Console.WriteLine("OK!");
+        }
+
+        public static string getFileString()
+        {
+            DateTime d = DateTime.Now;
+            return d.Year + "-" + d.Month + "-" + d.Day + " " + d.Hour + "h" + d.Minute + "m" + d.Second + "s.json";
         }
     }
 }
