@@ -2,6 +2,7 @@
 using System;
 using System.Collections.Generic;
 using System.IO;
+using System.Text;
 using System.Text.Json;
 
 namespace GetDataLyricToJson
@@ -26,13 +27,17 @@ namespace GetDataLyricToJson
                 {
                     Console.WriteLine("Lỗi at: " + item);
                 }
-               
+
                 i++;
             }
 
-            var jsonData = JsonSerializer.Serialize(list);
+            var options = new JsonSerializerOptions
+            {
+                WriteIndented = true,
+            };
+            var jsonData = JsonSerializer.Serialize(list, options);
             var nameFileToWrite = getFileString();
-            File.WriteAllText(@"C:\git\LyricApp\JsonFile\" + nameFileToWrite, jsonData);
+            File.WriteAllText(@"C:\git\LyricApp\JsonFile\" + nameFileToWrite, jsonData, Encoding.Default);
             Console.WriteLine("OK!");
         }
 
