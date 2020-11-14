@@ -1,1 +1,0 @@
-App show ra các lyric (dựa vào file .json data của project trước) => có chức năng tìm kiếm, sắp xếp
