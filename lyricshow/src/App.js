@@ -52,9 +52,9 @@ function App() {
     filterDropdown: ({ setSelectedKeys, selectedKeys, confirm, clearFilters }) => (
       <div style={{ padding: 8 }}>
         <Input
-          // ref={node => {
-          //   searchInput = node;
-          // }}
+          ref={node => {
+            searchInput = node;
+          }}
           placeholder={"Tìm kiếm ..."}
           value={selectedKeys[0]}
           onChange={e => setSelectedKeys(e.target.value ? [e.target.value] : [])}
@@ -84,7 +84,7 @@ function App() {
         : '',
     onFilterDropdownVisibleChange: visible => {
       if (visible) {
-        // setTimeout(() => searchInput.select(), 100);
+        setTimeout(() => searchInput.select(), 100);
       }
     },
     render: text =>
@@ -100,6 +100,7 @@ function App() {
         ),
   });
 
+  let searchInput = "";
   const handleSearch = (selectedKeys, confirm, dataIndex) => {
     confirm();
     setSearchText(selectedKeys[0]);
