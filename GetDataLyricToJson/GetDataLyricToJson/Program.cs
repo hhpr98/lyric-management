@@ -20,8 +20,16 @@ namespace GetDataLyricToJson
             {
                 try
                 {
-                    var lyr = getLyricInfo(item, i);
-                    list.Add(lyr);
+                    if (item.Contains(".txt"))
+                    {
+                        var lyr = getTxtItem(item, i);
+                        list.Add(lyr);
+                    }
+                    else
+                    {
+                        var lyr = getLyricInfo(item, i);
+                        list.Add(lyr);
+                    }
                 }
                 catch
                 {
@@ -95,5 +103,52 @@ namespace GetDataLyricToJson
 
             return tmp;
         }
+
+        public static LyricClass getTxtItem(string item, int i)
+        {
+            LyricClass tmp = new LyricClass();
+
+            var lines = File.ReadAllLines(item, Encoding.UTF8);
+            //var test = string.Join("\n", lines);
+
+            var _backslackIdx = item.LastIndexOf(@"\");
+
+            /*
+            // Create a pattern for a word that starts with letter "M"  
+            string pattern = @"\b[M]\w+";
+            // Create a Regex  
+            Regex rg = new Regex(pattern);
+
+            // Long string  
+            string authors = "Mahesh Chand, Raj Kumar, Mike Gold, Allen O'Neill, Marshal Troll";
+            // Get all matches  
+            MatchCollection matchedAuthors = rg.Matches(authors);
+            // Print all matched authors  
+            for (int count = 0; count < matchedAuthors.Count; count++)
+                Console.WriteLine(matchedAuthors[count].Value);
+            */
+
+            // id
+            tmp.id = i;
+
+            // name
+            tmp.name = lines[1];
+
+            // composer
+            tmp.composer = lines[3];
+
+            // filename
+            var _fileName = item.Substring(_backslackIdx + 1, item.Length - _backslackIdx - 1);
+            tmp.filename = _fileName;
+
+            // url
+            tmp.url = item;
+
+            // type
+            tmp.type = "txt";
+
+            return tmp;
+        }
+
     }
 }
