@@ -109,46 +109,54 @@ namespace GetDataLyricToJson
             LyricClass tmp = new LyricClass();
 
             var lines = File.ReadAllLines(item, Encoding.UTF8);
-            //var test = string.Join("\n", lines);
 
             var _backslackIdx = item.LastIndexOf(@"\");
 
-            /*
-            // Create a pattern for a word that starts with letter "M"  
-            string pattern = @"\b[M]\w+";
-            // Create a Regex  
-            Regex rg = new Regex(pattern);
-
-            // Long string  
-            string authors = "Mahesh Chand, Raj Kumar, Mike Gold, Allen O'Neill, Marshal Troll";
-            // Get all matches  
-            MatchCollection matchedAuthors = rg.Matches(authors);
-            // Print all matched authors  
-            for (int count = 0; count < matchedAuthors.Count; count++)
-                Console.WriteLine(matchedAuthors[count].Value);
-            */
-
             // id
             tmp.id = i;
-
             // name
             tmp.name = lines[1];
-
             // composer
             tmp.composer = lines[3];
-
             // filename
             var _fileName = item.Substring(_backslackIdx + 1, item.Length - _backslackIdx - 1);
             tmp.filename = _fileName;
-
             // url
             tmp.url = item;
-
             // type
             tmp.type = "txt";
+            // last updated
+            tmp.updated = DateTime.ParseExact(lines[5], "dd-MM-yyyy",  System.Globalization.CultureInfo.InvariantCulture);
+            // last recent
+            tmp.updated = DateTime.ParseExact(lines[7], "dd-MM-yyyy", System.Globalization.CultureInfo.InvariantCulture);
+            // rate
+            try
+            {
+                tmp.rate = int.Parse(lines[9]);
+            }
+            catch
+            {
+                tmp.rate = 0;
+            }
+            // is favorite
+            try
+            {
+                tmp.isFavorite = int.Parse(lines[11]);
+            }
+            catch
+            {
+                tmp.isFavorite = 0;
+            }
+            // link
+            tmp.link = lines[13];
+            // content
+            //var len = lines.Length;
+            //string[] result = new string[len-15];
+            //Array.Copy(lines, 15, result, 0, len-15);
+            //tmp.content = string.Join("\n", result);
+            tmp.content = string.Join("\n", lines);
 
             return tmp;
         }
-
     }
 }

@@ -12,5 +12,11 @@ namespace GetDataLyricToJson.Models
         public string filename { get; set; }
         public string url { get; set; }
         public string type { get; set; }
+        public DateTime updated { get; set; }
+        public DateTime recented { get; set; }
+        public int rate { get; set; }
+        public int isFavorite { get; set; }
+        public string link { get; set; }
+        public string content { get; set; }
     }
 }

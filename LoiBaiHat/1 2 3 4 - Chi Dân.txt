@@ -12,6 +12,10 @@ IsFavorite:
 0
 Link:
 
+Backup1:
+
+Backup2:
+
 Content:
 Bài hát: 1 2 3 4 - Chi Dân 
 
