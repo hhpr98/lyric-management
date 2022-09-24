@@ -1,3 +1,6 @@
 [submodule "lyric-app-web"]
 	path = lyric-app-web
 	url = https://github.com/hhpr98/lyric-app-web.git
+[submodule "lyric-json-creator"]
+	path = lyric-json-creator
+	url = https://github.com/hhpr98/lyric-json-creator.git
