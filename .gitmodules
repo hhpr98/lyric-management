@@ -4,3 +4,6 @@
 [submodule "lyric-json-creator"]
 	path = lyric-json-creator
 	url = https://github.com/hhpr98/lyric-json-creator.git
+[submodule "lyric-app-desktop-playing"]
+	path = lyric-app-desktop-playing
+	url = https://github.com/hhpr98/lyric-app-desktop-playing.git
