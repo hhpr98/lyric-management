@@ -10,3 +10,6 @@
 [submodule "lyric-app-desktop"]
 	path = lyric-app-desktop
 	url = https://github.com/hhpr98/lyric-app-desktop.git
+[submodule "lyric-app-mobile"]
+	path = lyric-app-mobile
+	url = https://github.com/hhpr98/lyric-app-mobile.git
